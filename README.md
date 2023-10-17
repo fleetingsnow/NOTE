@@ -6,7 +6,7 @@
 
 [编程语言](ProgrammingLanguage/readme.md)
 
-
+[数学语言](Mathlanguage/readme.md)
 # 大一  
 
 [数学](MATH/readme.md)
