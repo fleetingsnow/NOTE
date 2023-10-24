@@ -40,7 +40,7 @@
 5. частное 商
 
 ## 专有名词
-![](pic/Math1.png)
-![](pic/../Math1.2.png)
-![](pic/../Math1.3.png)
-![](pic/../Math1.4.png)
+![](pic/Math1.1.png)
+![](pic/Math1.2.png)
+![](pic/Math1.3.png)
+![](pic/Math1.4.png)
