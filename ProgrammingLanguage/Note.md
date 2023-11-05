@@ -70,3 +70,20 @@
 声明等）之前时，会被Javadoc文档工具读取作为Javadoc文档内容。文档注释的格
 式与多行注释的格式相同。对于初学者而言，文档注释并不是很重要，了解即可。
 
+### 循环控制
+1. **if语句**
+![](pic/Prolan6.png)
+1. **if…else语句**
+![](pic/Prolan7.png)
+3. **if…else if多分支语句**
+![](pic/Prolan8.png)
+4. **switch多分支语句**
+![](pic/Prolan9.png)
+![](pic/Prolan10.png)
+5. **while循环语句**
+![](pic/Prolan11.png)
+6. **do…while循环语句**
+![](pic/Prolan12.png)
+![](pic/Prolan13.png)
+7. **for循环语句**
+![](pic/Prolan14.png)
