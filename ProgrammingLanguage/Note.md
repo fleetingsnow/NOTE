@@ -87,3 +87,12 @@
 ![](pic/Prolan13.png)
 7. **for循环语句**
 ![](pic/Prolan14.png)
+
+### 字符串
+1. **连接多个字符串**
+使用“+”运算符可实现连接多个字符串的功能。“+”运算符可以连接多个运
+算符并产生一个String对象。
+2. **获取字符串长度**
+`String str = "We are students"; int size = str.length();`
+上段代码是将字符串str的长度赋值给int型变量size，此时变量size的值为
+15，这表示length()方法返回的字符串的长度包括字符串中的空格。
