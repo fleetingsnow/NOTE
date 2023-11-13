@@ -95,4 +95,9 @@
 2. **获取字符串长度**
 `String str = "We are students"; int size = str.length();`
 上段代码是将字符串str的长度赋值给int型变量size，此时变量size的值为
-15，这表示length()方法返回的字符串的长度包括字符串中的空格。
+这表示length()方法返回的字符串的长度包括字符串中的空格。
+
+### 数组
+1. **数组初始化**
+一维数组：`int arr = new int{1,2,5,7}`
+二维数组：`type arr[][]={15,23,48,59}`
