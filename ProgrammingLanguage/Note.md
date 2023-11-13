@@ -101,3 +101,45 @@
 1. **数组初始化**
 一维数组：`int arr = new int{1,2,5,7}`
 二维数组：`type arr[][]={15,23,48,59}`
+
+2. **遍历数组**
+**一维**：`for(数据类型 变量名:要遍历的数组)`  
+
+**二维**：遍历二维数组需使用双层for循环，通过数组的length属性可获得数组的长
+度
+`int[][] b=new int[][]{}`
+`for(int i=0;i<b.length;i++){`
+   `for(int j=0;j<b.length;j++){`
+   输出结果
+
+3. **填充数组**
+`fill(int[] a,int value)`
+a：要进行元素替换的数组。
+value：要存储数组中所有元素的值。
+**指定范围**：
+`fill(int[] a,int fromIndex,int toIndex,int value)`
+a：要进行填充的数组。
+fromIndex：要使用指定值填充的第一个元素的索引（包括）。
+toIndex：要使用指定值填充的最后一个元素的索引（不包括）。
+value：要存储在数组所有元素中的值。
+
+4. **数组排序**
+`Arrays.sort(object)`
+object是指进行排序的数组名称。
+5. **数组复制**
+   1. copyOf()方法：
+   `copyOf(arr,int newlength)`
+   arr：要进行复制的数组。
+newlength：int型常量，指复制后的新数组的长度。如果新数组的长度大
+于数组arr的长度，则用0填充（根据复制数组的类型来决定填充的值，整型数组用0
+填充，char型数组则使用null来填充）；如果复制后的数组长度小于数组arr的长
+度，则会从数组arr的第一个元素开始截取至满足新数组长度为止。
+    2. copyOfRange()方法:
+    `copyOfRange(arr,int formIndex,int toIndex)`
+    arr：要进行复制的数组对象。
+formIndex：指定开始复制数组的索引位置。formIndex必须在0至整个数
+组的长度之间。新数组包括索引是formIndex的元素。
+toIndex：要复制范围的最后索引位置。可大于数组arr的长度。新数组不
+包括索引是toIndex的元素。
+
+6. **数组查询**
