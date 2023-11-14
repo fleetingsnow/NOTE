@@ -143,3 +143,14 @@ toIndex：要复制范围的最后索引位置。可大于数组arr的长度。�
 包括索引是toIndex的元素。
 
 6. **数组查询**
+   1. `binarySearch(Object[],Object key)`
+   a：要搜索的数组。
+key：要搜索的值。
+   2. `binarySearch(Object[],int fromIndex,int toIndex,Object
+key)
+`
+该方法在指定的范围内检索某一元素。
+a：要进行检索的数组。
+fromIndex：指定范围的开始处索引（包含）。
+toIndex：指定范围的结束处索引（不包含）。
+key：要搜索的元素。
