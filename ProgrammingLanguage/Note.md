@@ -190,3 +190,12 @@ Java中有两种比较方式“==”和`equals`
 #### Integer类
 **Integer类的常用方法**：
 ![](pic/Prolan19.png)
+Integer类提供了以下4个常量。
+`MAX_VALUE`：表示int类型可取的最大值，即2
+31-1。
+`MIN_VALUE`：表示int类型可取的最小值，即-2
+31。
+`SIZE`：用来以二进制补码形式表示int值的位数。
+`TYPE`：表示基本类型int的Class实例。
+
+#### Boolean类

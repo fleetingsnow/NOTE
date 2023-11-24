@@ -32,6 +32,6 @@ $$|{x}_{n}-a|<(b-a)\div2$$
 此处$\epsilon$代表任意小值。
 **注意**：有界是函数收敛的必要条件，不是充分条件。
 
-**定理3**：（同号性）如果$\underset{x\rightarrow\infty}{\lim}$${x}_{n}$=a,且a>0(a<0),则存在N，当n>N时，都有${x}_{n}$>0（${x}_{n}$<0）。
+**定理3**：（同号性）如果  $\underset{x\rightarrow\infty}{\lim}$ ${x}_{n}$ =a,且a>0(a<0),则存在N，当n>N时，都有${x}_{n}$>0（${x}_{n}$<0）。
 **证明**：![](pic/Math4.png)(a<0同理)
-**推论**：如果从某项起有${x}_{n}$$\ge$0,（${x}_{n}$$\le$0）,且$\underset{x\rightarrow\infty}{\lim}$${x}_{n}$=a,则a$\ge$0（a$\le$0）
+**推论**：如果从某项起有${x}_{n}$$\ge$0,（ ${x}_{n}$ $\le$ 0）,且        $\underset{x\rightarrow\infty}{\lim}$${x}_{n}$=a,则a $\ge$ 0（a $\le$ 0）
