@@ -211,3 +211,18 @@ Integer类提供了以下4个**常量**。
 `SIZE`：用于以二进制补码形式表示byte值的位数。
 `TYPE`：表示基本类型byte的Class实例。
 
+#### Character类
+**Character类常用方法**
+![](pic/Prolan22.png)
+
+#### Double类
+**Double类常用方法**
+![](pic/Prolan23.png)
+**常量**
+`MAX_EXPONENT`：返回int值，表示有限double变量可能具有的最大指数。
+`MIN_EXPONENT`：返回int值，表示标准化double变量可能具有的最小指
+数。
+`NEGATIVE_INFINITY`：返回double值，表示保存double类型的负无穷大值
+的常量。
+`POSITIVE_INFINITY`：返回double值，表示保存double类型的正无穷大值
+的常量。
