@@ -226,3 +226,6 @@ Integer类提供了以下4个**常量**。
 的常量。
 `POSITIVE_INFINITY`：返回double值，表示保存double类型的正无穷大值
 的常量。
+
+### 数字格式化
+**特殊字符**：![](pic/Prolan24.png)
