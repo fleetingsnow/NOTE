@@ -229,3 +229,79 @@ Integer类提供了以下4个**常量**。
 
 ### 数字格式化
 **特殊字符**：![](pic/Prolan24.png)
+
+### 取整函数
+1. `public static double ceil(double a)`：返回大于等于参数的最小整
+数。
+2. `public static double floor(double a)`：返回小于等于参数的最大整
+数。
+3. `public static double rint(double a)`：返回与参数最接近的整数，
+如果两个同为整数且同样接近，则结果取偶数。
+4. `public static int round(float a)`：将参数加上0.5后返回与参数最
+近的整数。
+5. `public static long round(double a)`：将参数加上0.5后返回与参数
+最近的整数，然后强制转换为长整型。
+
+### 取最大值、最小值、绝对值函数方法
+1. `public static double max(double a,double b)`：取a与b之间的最大
+值。
+2. `public static int min(int a,int b)`：取a与b之间的最小值，参数为
+整型。
+3. `public static long min(long a,long b)`：取a与b之间的最小值，参
+数为长整型。
+4. `public static float min(float a,float b)`：取a与b之间的最小
+值，参数为浮点型。
+5. `public static double min(double a,double b)`：取a与b之间的最小
+值，参数为双精度型。
+5. `public static int abs(int a)`：返回整型参数的绝对值。
+6. `public static long abs(long a)`：返回长整型参数的绝对值。
+7. `public static float abs(float a)`：返回浮点型参数的绝对值。
+8. `public static double abs(double a)`：返回双精度型参数的绝对值。
+
+### 随机数
+#### `Math.random()`类
+![](pic/Prolan25.png)
+此方法同样可以用于生成随机字符
+
+#### `Random()`类
+`Random r=new Random()`(实例化一个Random类)
+若想不生成同样的随机数，可以在实例化Random类时设置随机数种子，语法如下：
+`Random r=new Random(seedValue)`
+**常用方法：**
+`public int nextInt()`：返回一个随机整数。
+`public int nextInt(int n)`：返回大于等于0且小于n的随机整数。
+`public long nextLong()`：返回一个随机长整型值。
+`public boolean nextBoolean()`：返回一个随机布尔型值。
+`public float nextFloat()`：返回一个随机浮点型值。
+`public double nextDouble()`：返回一个随机双精度型值。
+`public double nextGaussian()`：返回一个概率密度为高斯分布的双精
+度值。
+
+### 大数字运算
+#### `BigInteger`
+实例化BigInteger类语法：
+`public BigInteger(String val)`
+**其中val是十进制字符串，所以双引号不能省略**
+运算方法：
+1. `public BigInteger add(BigInteger val)`：做加法运算。
+2. `public BigInteger subtract(BigInteger val)`：做减法运算。
+3. `public BigInteger multiply(BigInteger val)`：做乘法运算。
+4. `public BigInteger divide(BigInteger val)`：做除法运算。
+5. `public BigInteger remainder(BigInteger val)`：做取余操作。
+6. `public BigInteger[] divideAndRemainder(BigInteger val)`：用数
+组返回余数和商，结果数组中第一个值为商，第二个值为余数。
+7. `public BigInteger pow(int exponent)`：进行取参数的exponent次方
+操作。
+8. `public BigInteger negate()`：取相反数。
+9. `public BigInteger shiftLeft(int n)`：将数字左移n位，如果n为负
+数，做右移操作。
+10. `public BigInteger shiftRight(int n)`：将数字右移n位，如果n为负
+数，做左移操作。
+11. `public BigInteger and(BigInteger val)`：做与操作。
+12. `public BigInteger or(BigInteger val)`：做或操作。
+13. `public int compareTo(BigInteger val)`：做数字比较操作。
+13. `public boolean equals(Object x)`：当参数x是BigInteger类型的数
+字并且数值相等时，返回true。
+14. `public BigInteger min(BigInteger val)`：返回较小的数值。
+15. `public BigInteger max(BigInteger val)`：返回较大的数值。
+
