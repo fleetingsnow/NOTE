@@ -305,3 +305,19 @@ Integer类提供了以下4个**常量**。
 14. `public BigInteger min(BigInteger val)`：返回较小的数值。
 15. `public BigInteger max(BigInteger val)`：返回较大的数值。
 
+#### `BigDecimal`
+两种构造方法：
+1. `public BigDecimal(double val)`：实例化时将双精度型转换为BigDecimal类型。
+2. `public BigDecimal(String val)`：实例化时将字符串形式转换为BigDecimal类型。
+
+#### 运算方法
+1. `public BigDecimal add(BigDecimal augend)`：做加法操作。
+2. `public BigDecimal subtract(BigDecimal subtrahend)`：做减法操
+作。
+3. `public BigDecimal multiply(BigDecimal multiplicand)`：做乘法
+操作。
+4. `public BigDecimal divide(BigDecimal divisor,int scale,int
+roundingMode)`：做除法操作，方法中3个参数分别代表除数、商的小数点后的位
+数、近似处理模式。
+**divide方法的多种设置方式
+![](pic/Prolan26.png)
