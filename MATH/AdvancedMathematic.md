@@ -51,3 +51,10 @@ $$\underset{x\rightarrow\infty}{\lim}f(x)=A\Leftrightarrow\forall\epsilon>0,\exi
 ![](pic/Math5.png)
 $x^-$为左极限代表x<$x_0$
 $x^+$为右极限代表x>$x_0$
+
+### 无穷小与无穷大
+**定义一：**如果函数f(x)当x$\rightarrow$0时(或x$\rightarrow$$\infty$)时的极限为零，那么则称f(x)为x$\rightarrow$0(或x$\rightarrow$$\infty$)的无穷小
+**注意**：不能将无穷小与很小的数混为一谈，无穷小是这样的函数，当x$\rightarrow$0(或x$\rightarrow$$\infty$)的过程中，这函数的绝对值可以小于任意给定的正数，很小的数不行，但0是唯一可以作为无穷小的常熟，若f(x)=0，那么对于任意给定$\epsilon$>0，总有|f(x)|<$\epsilon$
+**定理一:**在自变量的同一变化过程x$\rightarrow$$x_0$(或x$\rightarrow$$\infty$)中，函数f(x)具有极限A的充分必要条件为f(x)=A+a,其中a是无穷小。
+**证明：**
+先证明必要性，设$\underset{x\rightarrow\infty}{lim}$f(x)=A，则$\forall$$\epsilon$>0,$\exists$$\delta$>0,使得当0<|x-$x_0$|<$\delta$,有$|f(x)-A|<$\epsilon$$

@@ -321,3 +321,23 @@ roundingMode)`：做除法操作，方法中3个参数分别代表除数、商�
 数、近似处理模式。
 **divide方法的多种设置方式
 ![](pic/Prolan26.png)
+
+### Object类
+主要方法：
+1. getClass()方法
+getClass()方法是Object类定义的方法，它会返回对象执行时的Class实例，
+然后使用此实例调用getName()方法可以取得类的名称。
+2. toString()方法
+toString()方法的功能是将一个对象返回为字符串形式，它会返回一个String
+实例。在实际的应用中通常重写toString()方法，为对象提供一个特定的输出模
+式。当这个类转换为字符串或与字符串连接时，将自动调用重写的toString()方
+法。
+3. equals()方法
+“==”比较的是两个对象的引用是否相等，而equals()方法比较的是两个对象的实际内容。来看下面的实例。
+
+###　使用instanceof操作符判断对象类型
+判断父类对象是否为子类对象的实例。这个判断通常使用instanceof操作符来完成。
+**语法如下：**
+`myobject instanceof ExampleClass`
+myobject：某类的对象引用(子类)。
+ExampleClass：某个类(父类)。
