@@ -57,4 +57,6 @@ $x^+$为右极限代表x>$x_0$
 **注意**：不能将无穷小与很小的数混为一谈，无穷小是这样的函数，当x$\rightarrow$0(或x$\rightarrow$$\infty$)的过程中，这函数的绝对值可以小于任意给定的正数，很小的数不行，但0是唯一可以作为无穷小的常熟，若f(x)=0，那么对于任意给定$\epsilon$>0，总有|f(x)|<$\epsilon$
 **定理一:**在自变量的同一变化过程x$\rightarrow$$x_0$(或x$\rightarrow$$\infty$)中，函数f(x)具有极限A的充分必要条件为f(x)=A+a,其中a是无穷小。
 **证明：**
-先证明必要性，设$\underset{x\rightarrow\infty}{lim}$f(x)=A，则$\forall$$\epsilon$>0,$\exists$$\delta$>0,使得当0<|x-$x_0$|<$\delta$,有$|f(x)-A|<$\epsilon$$
+先证明必要性，设$\underset{x\rightarrow\infty}{lim}$f(x)=A，则$\forall$$\epsilon$>0,$\exists$$\delta$>0,使得当0<|x-$x_0$|<$\delta$,有$$|f(x)-A|<\epsilon$$令a=f(x)+A,所以a是当x$\rightarrow$$x_0$时的无穷小，则$$f(x)=A+a$$
+再证充分性，设f(x)=A+a,A是一个常数，a是无穷小，有$$|f(x)-A|=a$$
+因为$$|a|<\epsilon$$,所以$$|f(x)-A|<\epsilon$$证明出了A是f(x)的当x$\rightarrow$$x_0$时的极限
