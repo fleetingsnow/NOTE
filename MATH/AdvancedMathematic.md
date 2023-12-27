@@ -62,6 +62,26 @@ $x^+$为右极限代表x>$x_0$
 再证充分性，设f(x)=A+a,A是一个常数，a是无穷小，有$$|f(x)-A|=a$$
 因为$$|a|<\epsilon$$,所以$$|f(x)-A|<\epsilon$$证明出了A是f(x)的当x$\rightarrow$$x_0$时的极限
 #### 无穷大
-**定理一：**设函数f(x)在$x_0$的某一去心领域有定义(或|x|大于某一正数时有定义)，对于任意给定的正数M(无论它多大)，总存在正数$\delta$(或正数X)，只要x满足不等式0<x-$x_0$<$\delta$(或|x|>X),f(x)总满足不等式$$|f(x)|>M$$
+**定理一：** 设函数f(x)在$x_0$的某一去心领域有定义(或|x|大于某一正数时有定义)，对于任意给定的正数M(无论它多大)，总存在正数$\delta$(或正数X)，只要x满足不等式0<x-$x_0$<$\delta$(或|x|>X),f(x)总满足不等式$$|f(x)|>M$$
 那么称f(x)为x$\rightarrow$$x_0$(或x$\rightarrow$$\infty$)时的无穷大
-**定理二：**在自变量的同一变化过程中，若f(x)为无穷大，则1/f(x)为无穷小，若f(x)为无穷小，且f(x)不为0，则1/f(x)为无穷大
+**定理二：** 在自变量的同一变化过程中，若f(x)为无穷大，则1/f(x)为无穷小，若f(x)为无穷小，且f(x)不为0，则1/f(x)为无穷大
+
+### 极限运算法则
+**定理一：** 两个无穷小的和是无穷小
+**证明** 设$\alpha$和$\beta$是x$\rightarrow$$x_0$时的两个无穷小，而$$\gamma=\alpha+\beta$$
+$\forall$$\epsilon$>0，对于$\alpha$<$\epsilon$/2,$\exists$$\sigma_1$>0,0<|x-$x_0$|<$\sigma_1$使得$$|\alpha|<\epsilon/2$$
+因为$\beta$为x$\rightarrow$$x_0$时的无穷小，对于$\epsilon$/2>0,$\exists$$\sigma_2$>0,当0<|x-$x_0$|<$\sigma_2$时，不等式$$|\beta|<\epsilon/2$$,则当0<|x-$x_0$|<$\sigma$时，有$$|\alpha|<\epsilon/2 及|\beta|<\epsilon/2$$则$|\gamma|=|\alpha|+|\beta|\le\epsilon$,就证明了$\gamma$也为无穷小。
+由数学归纳法可得：**有限个无穷小加起来还是无穷小**
+**定理二：**有界函数与无穷小的乘积为无穷小。
+**证明**：设函数u为某一去心领域U($x_0，\sigma_1$)内是有界的，即$\exists$M>0使|u|$\le$M,$\alpha$为$x\rightarrow$$x_0$的无穷小，即$\forall\epsilon>0$,$\exists\sigma_2$,使得0<|x-$x_0$|<$\sigma_2$ $$|\alpha|<\epsilon/M$$.
+取$\sigma$=min{$\sigma_1,\sigma_2$},则当x$\in$U($x_0，\sigma_1$)时
+|u$\alpha$|=|u|$\cdot$|$\alpha$|<M$\cdot$$\epsilon$/M=$\epsilon$.
+所以有界函数乘以无穷小等于无穷小。
+#### 推论一：
+常数与无穷小的数的乘积为无穷小。
+#### 推论二：
+有限个无穷小的乘积是无穷小。
+**定理三：**
+如果$\underbar{lim}$f(x)=A,$\underbar{lim}$g(x)=B.
+(1)$\underbar{lim}$[f(x)$\pm$g(x)]=$\underbar{lim}$f(x)$\pm$$\underbar{lim}$g(x)=A$\pm$B.
+(2)$\underbar{lim}$[f(x)$\times$g(x)]=$\underbar{lim}$f(x)$\times$$\underbar{lim}$g(x)=A$\times$B.

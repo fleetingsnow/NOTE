@@ -341,3 +341,8 @@ toString()方法的功能是将一个对象返回为字符串形式，它会返�
 `myobject instanceof ExampleClass`
 myobject：某类的对象引用(子类)。
 ExampleClass：某个类(父类)。
+
+### final型变量常用方法
+![](pic/Prolan27.png)
+### final方法
+final方法不能被重写
