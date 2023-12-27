@@ -85,3 +85,6 @@ $\forall$$\epsilon$>0，对于$\alpha$<$\epsilon$/2,$\exists$$\sigma_1$>0,0<|x-$
 如果$\underbar{lim}$f(x)=A,$\underbar{lim}$g(x)=B.
 (1)$\underbar{lim}$[f(x)$\pm$g(x)]=$\underbar{lim}$f(x)$\pm$$\underbar{lim}$g(x)=A$\pm$B.
 (2)$\underbar{lim}$[f(x)$\times$g(x)]=$\underbar{lim}$f(x)$\times$$\underbar{lim}$g(x)=A$\times$B.
+(3)若有B$\neq$0,$\underbar{lim}$f(x)/g(x)=$\underbar{lim}$f(x)/$\underbar{lim}$g(x)=A/B。
+定理三中的(1),(2)可推广到有限个函数的情形，则有
+$\underbar{lim}$[]
