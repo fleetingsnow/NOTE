@@ -72,7 +72,7 @@ $x^+$为右极限代表x>$x_0$
 $\forall$$\epsilon$>0，对于$\alpha$<$\epsilon$/2,$\exists$$\sigma_1$>0,0<|x-$x_0$|<$\sigma_1$使得$$|\alpha|<\epsilon/2$$
 因为$\beta$为x$\rightarrow$$x_0$时的无穷小，对于$\epsilon$/2>0,$\exists$$\sigma_2$>0,当0<|x-$x_0$|<$\sigma_2$时，不等式$$|\beta|<\epsilon/2$$,则当0<|x-$x_0$|<$\sigma$时，有$$|\alpha|<\epsilon/2 及|\beta|<\epsilon/2$$则$|\gamma|=|\alpha|+|\beta|\le\epsilon$,就证明了$\gamma$也为无穷小。
 由数学归纳法可得：**有限个无穷小加起来还是无穷小**
-**定理二：**有界函数与无穷小的乘积为无穷小。
+**定理二：** 有界函数与无穷小的乘积为无穷小。
 **证明**：设函数u为某一去心领域U($x_0，\sigma_1$)内是有界的，即$\exists$M>0使|u|$\le$M,$\alpha$为$x\rightarrow$$x_0$的无穷小，即$\forall\epsilon>0$,$\exists\sigma_2$,使得0<|x-$x_0$|<$\sigma_2$ $$|\alpha|<\epsilon/M$$.
 取$\sigma$=min{$\sigma_1,\sigma_2$},则当x$\in$U($x_0，\sigma_1$)时
 |u$\alpha$|=|u|$\cdot$|$\alpha$|<M$\cdot$$\epsilon$/M=$\epsilon$.
@@ -85,6 +85,36 @@ $\forall$$\epsilon$>0，对于$\alpha$<$\epsilon$/2,$\exists$$\sigma_1$>0,0<|x-$
 如果$\underbar{lim}$f(x)=A,$\underbar{lim}$g(x)=B.
 (1)$\underbar{lim}$[f(x)$\pm$g(x)]=$\underbar{lim}$f(x)$\pm$$\underbar{lim}$g(x)=A$\pm$B.
 (2)$\underbar{lim}$[f(x)$\times$g(x)]=$\underbar{lim}$f(x)$\times$$\underbar{lim}$g(x)=A$\times$B.
+**推论一：**$\underbar{lim}$[cf(x)]=c$\underbar{lim}$f(x)(c为常数)
+**推论二：**$\underbar{lim}$[$f(x)^n$]=$[\underbar{lim}f(x)]^n$
 (3)若有B$\neq$0,$\underbar{lim}$f(x)/g(x)=$\underbar{lim}$f(x)/$\underbar{lim}$g(x)=A/B。
 定理三中的(1),(2)可推广到有限个函数的情形，则有
-$\underbar{lim}$[]
+$\underbar{lim}$[f(x)+g(x)-h(x)]=$\underbar{lim}$
+**定理四：**
+存在数列$x_n$,$y_n$,$\underset{n\rightarrow\infty}{lim}x_n$,$\underset{n\rightarrow\infty}{lim}y_n$.
+(1)$\underset{n\rightarrow\infty}{lim}(x_n\pm y_n)$=A+B
+(2)$\underset{n\rightarrow\infty}{lim}(x_n\times y_n)$=A$\times$B
+(3)当$y_0\neq$0,且B$\neq$0时，$\underset{n\rightarrow\infty}{lim}(x_n/y_n)$=A/B
+**定理五：** 
+若$\phi$(x)$\ge$g(x),且$\underbar{lim}\phi(x)$=A,$\underbar{lim}g(x)$=B,则A$\ge$B
+**证明：**
+设f(x)=$\phi$(x)-g(x),则$$\underbar{lim}f(x)=\underbar{lim}[\phi(x)-g(x)]$$
+$$=\underbar{lim}\phi(x)-\underbar{lim}g(x)=A-B$$
+所以f(x)$\ge$0,即A$\ge$B
+**定理六（复合函数运算）：** 
+设函数y=f(g(x))是由u=g(x)，与y=f(u),复合形成。若f(g(x))z$x_0$的去心领域有定义，若$\underset{x\rightarrow x_0}{lim}g(x)$=$u_0$,$\underset{u\rightarrow u_0}{lim}f(u)$=A,且存在$\sigma_0$>0,当x$\in$U($x_0,\sigma_0$),存在$\underset{x\rightarrow x_0}{lim}g(x)\neq u_0$
+则$$\underset{x\rightarrow x_0}{lim}f[g(x)]=\underset{u\rightarrow u_0}{lim}f(u)=A$$
+**证明：**
+![](pic/Math6.png)
+
+### 极限存在准则
+**两个重要极限**
+1. $\underset{x\rightarrow 0}{lim}\sin x/x$=1
+2. $\underset{x\rightarrow\infty}{lim}(1+1/x)$=e
+**准则一：**
+如果数列{$x_n$},{$y_n$},{$z_n$}满足以下条件
+(1)从某项起$\exist  n_0 \in$$N_+$,当n>$n_0$有
+$$y_0 \le x_0 \le z_0$$
+(2)$\underset{n\rightarrow\infty}{lim}y_n$=a,$\underset{n\rightarrow\infty}{lim}z_n$=a.
+那么数列{$x_n$}存在极限，且$\underset{n\rightarrow\infty}{lim}x_n$=a。
+![](pic/Math7.png)

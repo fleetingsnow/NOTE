@@ -346,3 +346,20 @@ ExampleClass：某个类(父类)。
 ![](pic/Prolan27.png)
 ### final方法
 final方法不能被重写
+### 异常捕捉
+Java语言的异常捕获结构由try、catch和finally 3部分组成。其中，try语句块存放的是可能发生异常的Java语句；catch程序块在try语句块之后，用来激发被捕获的异常；finally语句块是异常处理结构的最后执行部分，无论try语句块中的代码如何退出，都将执行finally语句块
+1.**try-catch语句块** 
+当try代码块中的语句发生异常时，程序就会调转到catch代码块中执行，执行完catch代码块中的程序代码后，将继续执行catch代码块后的其他代码，而不会执行try代码块中发生异常语句后面的代码。
+2. **finally语句块**
+完整的异常处理语句一定要包含finally语句，无论程序中有无异常发生，并且无论之间的try-catch是否顺利执行完毕，都会执行finally语句。
+**注意：**
+在以下4种特殊情况下，finally块不会被执行：
+1. 在finally语句块中发生了异常。
+2. 在前面的代码中使用了System.exit()退出程序。
+3. 程序所在的线程死亡。
+4. 关闭CPU。
+**java中常见异常**
+![](pic/Prolan28.png)
+
+### 运行时程序错误
+![](pic/Prolan29.png)
