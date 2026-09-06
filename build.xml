@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="web3-ant-build" default="build" basedir=".">
+
+    <property file="build.properties"/>
+    <property environment="env"/>
+    <property name="project.md5" value="not-computed"/>
+    <property name="project.sha1" value="not-computed"/>
+
+    <path id="compile.classpath">
+        <pathelement location="${jakarta.api.jar}"/>
+        <pathelement location="${postgres.jar}"/>
+    </path>
+
+    <path id="test.compile.classpath">
+        <path refid="compile.classpath"/>
+        <pathelement location="${classes.dir}"/>
+        <pathelement location="${junit.platform.jar}"/>
+    </path>
+
+    <path id="test.run.classpath">
+        <pathelement location="${classes.dir}"/>
+        <pathelement location="${test.classes.dir}"/>
+        <pathelement location="${junit.platform.jar}"/>
+    </path>
+
+    <target name="init">
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${classes.dir}"/>
+        <mkdir dir="${test.classes.dir}"/>
+        <mkdir dir="${dist.dir}"/>
+        <mkdir dir="${docs.dir}"/>
+        <mkdir dir="${tmp.dir}"/>
+        <mkdir dir="${build.dir}/META-INF"/>
+    </target>
+
+    <target name="resolve-deps">
+        <condition property="jakarta.present">
+            <available file="${jakarta.api.jar}"/>
+        </condition>
+        <condition property="postgres.present">
+            <available file="${postgres.jar}"/>
+        </condition>
+        <fail unless="jakarta.present" message="Missing dependency: ${jakarta.api.jar}. Build once with Maven or adjust build.properties."/>
+        <fail unless="postgres.present" message="Missing dependency: ${postgres.jar}. Build once with Maven or adjust build.properties."/>
+    </target>
+
+    <target name="compile" depends="init,resolve-deps" description="Compile project Java sources">
+        <javac srcdir="${src.dir}"
+               destdir="${classes.dir}"
+               includeantruntime="false"
+               encoding="${encoding}"
+               source="${java.source}"
+               target="${java.target}"
+               classpathref="compile.classpath"/>
+        <copy todir="${classes.dir}" failonerror="false">
+            <fileset dir="${resources.dir}" erroronmissingdir="false"/>
+        </copy>
+    </target>
+
+    <target name="create-manifest-base">
+        <manifest file="${manifest.file}" mode="replace">
+            <attribute name="Manifest-Version" value="1.0"/>
+            <attribute name="Implementation-Title" value="${project.name}"/>
+            <attribute name="Implementation-Version" value="${project.version}"/>
+            <attribute name="Main-Class" value="${main.class}"/>
+            <attribute name="Project-MD5" value="${project.md5}"/>
+            <attribute name="Project-SHA1" value="${project.sha1}"/>
+        </manifest>
+    </target>
+
+    <target name="build" depends="compile,create-manifest-base" description="Build executable jar">
+        <jar destfile="${jar.file}" basedir="${classes.dir}" manifest="${manifest.file}"/>
+        <echo message="Built jar: ${jar.file}"/>
+    </target>
+
+    <target name="clean" description="Delete all build outputs">
+        <delete dir="${build.dir}"/>
+    </target>
+
+    <target name="prepare-test" depends="build">
+        <condition property="tests.present">
+            <and>
+                <available file="${test.src.dir}" type="dir"/>
+                <resourcecount when="greater" count="0">
+                    <fileset dir="${test.src.dir}" includes="**/*Test.java,**/*Tests.java"/>
+                </resourcecount>
+            </and>
+        </condition>
+        <condition property="junit.platform.present">
+            <available file="${junit.platform.jar}"/>
+        </condition>
+        <condition property="tests.absent">
+            <not>
+                <isset property="tests.present"/>
+            </not>
+        </condition>
+        <fail if="tests.present" unless="junit.platform.present"
+              message="JUnit launcher not found at ${junit.platform.jar}. Update build.properties or install dependency."/>
+    </target>
+
+    <target name="compile-tests" depends="prepare-test" if="tests.present">
+        <javac srcdir="${test.src.dir}"
+               destdir="${test.classes.dir}"
+               includeantruntime="false"
+               encoding="${encoding}"
+               source="${java.source}"
+               target="${java.target}"
+               classpathref="test.compile.classpath"/>
+    </target>
+
+    <target name="run-tests" depends="compile-tests" if="tests.present">
+        <java classname="org.junit.platform.console.ConsoleLauncher"
+              classpathref="test.run.classpath"
+              fork="true"
+              failonerror="true">
+            <arg value="--scan-classpath"/>
+        </java>
+    </target>
+
+    <target name="test-noop" depends="prepare-test" if="tests.absent">
+        <echo message="No JUnit tests detected under ${test.src.dir}."/>
+    </target>
+
+    <target name="test" depends="run-tests,test-noop" description="Run JUnit tests after build"/>
+
+    <target name="music" depends="build" description="Play sound after successful build">
+        <exec executable="powershell" failonerror="false">
+            <arg value="-NoProfile"/>
+            <arg value="-ExecutionPolicy"/>
+            <arg value="Bypass"/>
+            <arg value="-Command"/>
+            <arg value="[console]::beep(1100,250); Start-Sleep -Milliseconds 80; [console]::beep(1400,250)"/>
+        </exec>
+    </target>
+
+    <target name="doc" depends="build" description="Generate javadocs and embed checksums into manifest">
+        <checksum algorithm="MD5" totalproperty="project.md5">
+            <fileset dir="${src.dir}" includes="**/*.java"/>
+            <fileset dir="." includes="**/*.xml,**/*.properties" excludes="${xml.excludes}"/>
+        </checksum>
+        <checksum algorithm="SHA-1" totalproperty="project.sha1">
+            <fileset dir="${src.dir}" includes="**/*.java"/>
+            <fileset dir="." includes="**/*.xml,**/*.properties" excludes="${xml.excludes}"/>
+        </checksum>
+
+        <javadoc sourcepath="${src.dir}"
+                 destdir="${docs.dir}/javadoc"
+                 encoding="${encoding}"
+                 failonerror="false"
+                 useexternalfile="true">
+            <classpath refid="compile.classpath"/>
+        </javadoc>
+
+        <antcall target="create-manifest-base"/>
+        <jar destfile="${jar.file}" basedir="${classes.dir}" manifest="${manifest.file}">
+            <zipfileset dir="${docs.dir}/javadoc" prefix="javadoc" erroronmissingdir="false"/>
+        </jar>
+        <echo message="Updated jar with javadocs and checksums: ${jar.file}"/>
+    </target>
+
+    <target name="xml" description="Validate XML files in project">
+        <xmlvalidate lenient="true" warn="true">
+            <fileset dir="." includes="**/*.xml" excludes="${xml.excludes}"/>
+        </xmlvalidate>
+    </target>
+
+    <target name="diff" description="Check git diff and auto-commit if protected classes unchanged">
+        <exec executable="powershell" failonerror="false" resultproperty="diff.exit.code">
+            <arg value="-NoProfile"/>
+            <arg value="-ExecutionPolicy"/>
+            <arg value="Bypass"/>
+            <arg value="-Command"/>
+            <arg value="$ErrorActionPreference='Stop'; git rev-parse --is-inside-work-tree *> $null; if ($LASTEXITCODE -ne 0) { Write-Host 'Not a git repository. diff skipped.'; exit 0 }; $protected='${git.protected.paths}'.Split(';') | ForEach-Object { $_.Trim() } | Where-Object { $_ -ne '' }; $changes = git diff --name-only; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }; if (-not $changes) { Write-Host 'No changes detected.'; exit 0 }; $touchProtected = $false; foreach ($c in $changes) { foreach ($p in $protected) { if ($c.EndsWith($p)) { $touchProtected = $true } } }; if ($touchProtected) { Write-Host 'Protected files changed. Auto-commit skipped.'; exit 2 }; git add -A; git commit -m '${git.auto.commit.message}'; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }; Write-Host 'Auto-commit complete.'; exit 0"/>
+        </exec>
+
+        <condition property="diff.exit.handled">
+            <or>
+                <equals arg1="${diff.exit.code}" arg2="0"/>
+                <equals arg1="${diff.exit.code}" arg2="2"/>
+            </or>
+        </condition>
+        <fail unless="diff.exit.handled" message="Diff target failed with exit code ${diff.exit.code}"/>
+        <echo message="diff finished, code=${diff.exit.code} (0=ok/committed, 2=protected change)."/>
+    </target>
+
+    <target name="env" depends="build" description="Build and run app in alternate environments">
+        <echo message="Running with environment #1"/>
+        <java jar="${jar.file}" fork="true" failonerror="true" jvm="${env.java.executable}">
+            <jvmarg line="${env.jvm.args}"/>
+            <arg line="${env.app.args}"/>
+        </java>
+
+        <echo message="Running with environment #2"/>
+        <java jar="${jar.file}" fork="true" failonerror="true" jvm="${env.alt.java.executable}">
+            <jvmarg line="${env.alt.jvm.args}"/>
+            <arg line="${env.alt.app.args}"/>
+        </java>
+    </target>
+
+    <target name="alt" depends="build,resolve-deps" description="Create alternative build variant with renamed symbols">
+        <delete dir="${alt.work.dir}"/>
+        <mkdir dir="${alt.src.dir}"/>
+        <mkdir dir="${alt.classes.dir}"/>
+
+        <copy todir="${alt.src.dir}">
+            <fileset dir="${src.dir}"/>
+        </copy>
+
+        <move file="${alt.src.dir}/app/${alt.class.old}.java"
+              tofile="${alt.src.dir}/app/${alt.class.new}.java"
+              failonerror="false"/>
+
+        <replaceregexp byline="true" flags="g">
+            <regexp pattern="\b${alt.class.old}\b"/>
+            <substitution expression="${alt.class.new}"/>
+            <fileset dir="${alt.src.dir}" includes="**/*.java"/>
+        </replaceregexp>
+
+        <replaceregexp byline="true" flags="g">
+            <regexp pattern="\b${alt.variable.old}\b"/>
+            <substitution expression="${alt.variable.new}"/>
+            <fileset dir="${alt.src.dir}" includes="**/*.java"/>
+        </replaceregexp>
+
+        <javac srcdir="${alt.src.dir}"
+               destdir="${alt.classes.dir}"
+               includeantruntime="false"
+               encoding="${encoding}"
+               source="${java.source}"
+               target="${java.target}"
+               classpathref="compile.classpath"/>
+
+        <copy todir="${alt.classes.dir}" failonerror="false">
+            <fileset dir="${resources.dir}" erroronmissingdir="false"/>
+        </copy>
+
+        <manifest file="${alt.manifest.file}" mode="replace">
+            <attribute name="Manifest-Version" value="1.0"/>
+            <attribute name="Implementation-Title" value="${project.name}-alt"/>
+            <attribute name="Implementation-Version" value="${project.version}"/>
+            <attribute name="Main-Class" value="app.${alt.class.new}"/>
+        </manifest>
+
+        <jar destfile="${alt.jar.file}" basedir="${alt.classes.dir}" manifest="${alt.manifest.file}"/>
+        <echo message="Alternative jar built: ${alt.jar.file}"/>
+    </target>
+</project>
